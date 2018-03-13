@@ -1,0 +1,108 @@
+ <form id="user_form" data-toggle="validator" class="col-md-6" enctype="multipart/form-data">
+    <div class="form-group <?php if (isset($errors->email)) { ?>has-error<?php } ?>" id="email-group">
+        <label for="email">Email address</label>
+        <input type="email" name="email" class="form-control" id="email" aria-describedby="emailHelp" placeholder="Enter email" value="<?php if (isset($params['email'])) { echo $params['email']; } ?>" required>
+        <small id="emailHelp" class="form-text text-muted">We'll never share your email with anyone else.</small>
+        <?php
+            if (isset($errors->email)) {
+                foreach($errors->email as $idx => $error) { ?>
+                    <div class="help-block"><?php echo $error ?></div>
+          <?php }
+            }
+        ?>
+    </div>
+    <div class="form-group <?php if (isset($errors->name)) { ?>has-error<?php } ?>" id="name-group">
+        <label for="name">Name</label>
+        <input type="text" name="name" class="form-control" id="name" placeholder="Enter name" value="<?php if (isset($params['name'])) { echo $params['name']; } ?>" required>
+        <?php
+            if (isset($errors->name)) {
+                foreach($errors->name as $idx => $error) { ?>
+                    <div class="help-block"><?php echo $error ?></div>
+          <?php }
+            }
+        ?>
+    </div>
+    <div class="form-group <?php if (isset($errors->first_address)) { ?>has-error<?php } ?>" id="first_address-group">
+        <label for="first_address">Adress 1</label>
+        <input type="text" name="first_address" class="form-control" id="first_address" placeholder="Enter address 1" value="<?php if (isset($params['first_address'])) { echo $params['first_address']; } ?>" required>
+        <?php
+            if (isset($errors->first_address)) {
+                foreach($errors->first_address as $idx => $error) { ?>
+                    <div class="help-block"><?php echo $error ?></div>
+          <?php }
+            }
+        ?>
+    </div>
+    <div class="form-group <?php if (isset($errors->second_address)) { ?>has-error<?php } ?>" id="second_address-group">
+        <label for="second_address">Adress 2</label>
+        <input type="text" name="second_address" class="form-control" id="second_address" placeholder="Enter address 2" value="<?php if (isset($params['second_address'])) { echo $params['second_address']; } ?>">
+        <?php
+            if (isset($errors->second_address)) {
+                foreach($errors->second_address as $idx => $error) { ?>
+                    <div class="help-block"><?php echo $error ?></div>
+          <?php }
+            }
+        ?>
+    </div>
+    <div class="form-group <?php if (isset($errors->eircode)) { ?>has-error<?php } ?>" id="eircode-group">
+        <label for="eircode">Eircode</label>
+        <input type="text" name="eircode" class="form-control" id="eircode" placeholder="Enter eircode" value="<?php if (isset($params['eircode'])) { echo $params['eircode']; } ?>" required>
+        <?php
+            if (isset($errors->eircode)) {
+                foreach($errors->eircode as $idx => $error) { ?>
+                    <div class="help-block"><?php echo $error ?></div>
+          <?php }
+            }
+        ?>
+    </div>
+    <div class="form-group <?php if (isset($errors->country)) { ?>has-error<?php } ?>" id="country-group">
+      <label for="country">Country</label>
+      <select class="form-control" id="country" name="country">
+            <option></option>
+        <?php foreach ($countries as $country) { ?>
+            <option value="<?php echo $country->id ?>" data-country-code="<?php echo $country->code ?>"><?php echo $country->name ?></option>
+        <?php } ?>
+      </select>
+      <?php
+            if (isset($errors->country)) {
+                foreach($errors->country as $idx => $error) { ?>
+                    <div class="help-block"><?php echo $error ?></div>
+          <?php }
+            }
+        ?>
+    </div>
+    <div class="form-group <?php if (isset($errors->password)) { ?>has-error<?php } ?>" id="password-group">
+        <label for="password">Password</label>
+        <input type="password" name="password" class="form-control" id="password" placeholder="Password" data-minlength="6" required>
+        <?php
+            if (isset($errors->password)) {
+                foreach($errors->password as $idx => $error) { ?>
+                    <div class="help-block"><?php echo $error ?></div>
+          <?php }
+            }
+        ?>
+    </div>
+    <div class="form-group <?php if (isset($errors->confirm_password)) { ?>has-error<?php } ?>" id="confirm_password-group">
+        <label for="confirm_password">Confirm Password</label>
+        <input type="password" name="confirm_password" class="form-control" id="confirm_password" placeholder="Confirm Password" required>
+        <?php
+            if (isset($errors->confirm_password)) {
+                foreach($errors->confirm_password as $idx => $error) { ?>
+                    <div class="help-block"><?php echo $error ?></div>
+          <?php }
+            }
+        ?>
+    </div>
+    <div class="form-group <?php if (isset($errors->profile_picture)) { ?>has-error<?php } ?>" id="profile_picture-group">
+        <label for="profile_picture">Profile Picture</label>
+        <input type="file" name="profile_picture" class="form-control-file" id="profile_picture">
+        <?php
+            if (isset($errors->profile_picture)) {
+                foreach($errors->profile_picture as $idx => $error) { ?>
+                    <div class="help-block"><?php echo $error ?></div>
+          <?php }
+            }
+        ?>
+    </div>
+    <button type="submit" class="btn btn-primary" id="submit-btn">Submit</button>
+</form>
